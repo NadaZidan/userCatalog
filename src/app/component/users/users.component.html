@@ -1,40 +1,25 @@
-<div *ngIf="response" class="card">
-    <div class="card-body">
-      <h5>Random User API</h5>
-      <p class="card-text">Seed:{{response.info.seed}}</p>
-      <p class="card-text">Results:{{response.info.results}}</p>
-      <p class="card-text">Version:{{response.info.version}}</p>
-    </div>
-</div>
+
 <br>
-   
-<table class="table table-striped">
-    <thead class="table-light">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Img</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Address</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Action</th>
-           </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of response?.results;let i=index">
-            <td>{{user.uuid.substr(0,6)}}</td>
-            <td><img height="45" width="45" style="border-radius:50% ;" [src]="user.imagUrl" alt="user.firstName"></td>
-            <td>{{user.firstName}} {{user.lastName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.address}}</td>
-            <td>{{user.phone}}</td>
-            <td>
-                <button [routerLink]="['/userDetails',user.uuid]" class="button btn btn-primary">view</button>
-            </td>
+  
+  <div class="container">
+    <div class="row">
+        <div *ngFor="let user of response?.therapists;let i=index" class="col-4 mb-2 text-center">
+            <div class="d-flex   p-3 card h-100 ">
+                <div class="card-block">
+                    <img height="70" width="100" style="border-radius:50% ;" [src]="user.profilePicFile" alt="user.firstName">
+                    <h4 style="color: rgb(19, 134, 134);" class="card-title">{{user?.nameAr}}</h4>
+                    <p>rating:({{user?.rating}})</p>
+                    <p style="color:gray;" class="card-text font-weight-bold">{{user?.titleAr}}</p>
+                    <p style="color:gray;" class="card-text">{{user?.mainSpec2Ar}}</p>
+                </div>
+                <div class="btn-group h-50 w-20 mt-3">
+                  <a href="#" class="btn btn-primary">book Now</a>
+                  <a href="#" class="btn btn-secondary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+ 
+ 
 
-
-
-        </tr>
-      
-    </tbody>
-  </table>

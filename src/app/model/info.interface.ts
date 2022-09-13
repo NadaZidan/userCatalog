@@ -1,6 +1,15 @@
 export interface Info{
-    page: number,
-    results: number,
-   seed: string,
-   version: string
+success:boolean;
+message: {
+ar: string,
+en: string,
+af: string
+},
+pagination: {
+page:number,
+
+totalItems: number,
+totalPages: number
+}
+   
 }
